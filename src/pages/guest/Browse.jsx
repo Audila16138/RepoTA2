@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { repoList, kategoriList } from '../../utils/dummyData';
 import { truncate, similarityColor } from '../../utils/helpers';
 
@@ -50,7 +51,11 @@ export default function GuestBrowse() {
             Tidak ada repositori yang ditemukan
           </div>
         ) : filtered.map((r) => (
-          <div key={r.id} className="card hover:shadow-md transition cursor-pointer group">
+          <Link
+            key={r.id}
+            to={`/guest/${r.id}`}
+            className="card hover:shadow-md transition cursor-pointer group block"
+          >
             <div className="flex items-start justify-between gap-2 mb-3">
               <span className="badge badge-info">{r.kategori}</span>
               <span className="text-xs text-gray-400">{r.tahun}</span>
@@ -67,7 +72,7 @@ export default function GuestBrowse() {
                 {r.similarity}%
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

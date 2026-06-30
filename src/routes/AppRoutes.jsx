@@ -24,6 +24,7 @@ import Laporan          from '../pages/admin/Laporan';
 
 // Guest pages
 import GuestBrowse from '../pages/guest/Browse';
+import GuestDetail from '../pages/guest/Detail';
 
 export default function AppRoutes() {
   return (
@@ -58,6 +59,7 @@ export default function AppRoutes() {
       {/* Guest / Publik */}
       <Route path="/guest" element={<GuestLayout />}>
         <Route index element={<GuestBrowse />} />
+        <Route path=":id" element={<GuestDetail />} />
       </Route>
 
       {/* 404 — fallback ke landing publik */}
