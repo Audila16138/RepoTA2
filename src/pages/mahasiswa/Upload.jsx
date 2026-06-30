@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 export default function UploadRepo() {
+  const today = new Date().toISOString().split('T')[0]; // format YYYY-MM-DD untuk input type="date"
+
   const [file, setFile]       = useState(null);
   const [dragging, setDrag]   = useState(false);
   const [loading, setLoading] = useState(false);
@@ -8,7 +10,7 @@ export default function UploadRepo() {
   const [errors, setErrors]   = useState({});
 
   const [form, setForm] = useState({
-    judul: '', abstrak: '', kategori: '', tahun: '', keywords: '',
+    judul: '', abstrak: '', kategori: '', tanggalUpload: today, keywords: '',
   });
 
   function handleDrop(e) {
@@ -35,11 +37,11 @@ export default function UploadRepo() {
 
   function validate() {
     const newErrors = {};
-    if (!file)               newErrors.file     = 'File PDF wajib diunggah';
-    if (!form.judul.trim())  newErrors.judul     = 'Judul tugas akhir wajib diisi';
-    if (!form.kategori)      newErrors.kategori  = 'Pilih salah satu kategori';
-    if (!form.tahun)         newErrors.tahun     = 'Pilih tahun';
-    if (!form.abstrak.trim()) newErrors.abstrak  = 'Abstrak wajib diisi';
+    if (!file)                 newErrors.file          = 'File PDF wajib diunggah';
+    if (!form.judul.trim())    newErrors.judul          = 'Judul tugas akhir wajib diisi';
+    if (!form.kategori)        newErrors.kategori       = 'Pilih salah satu kategori';
+    if (!form.tanggalUpload)   newErrors.tanggalUpload  = 'Tanggal upload wajib diisi';
+    if (!form.abstrak.trim())  newErrors.abstrak        = 'Abstrak wajib diisi';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
@@ -49,6 +51,12 @@ export default function UploadRepo() {
     if (!validate()) return;
     setLoading(true);
     setTimeout(() => { setLoading(false); setSuccess(true); }, 1200);
+  }
+
+  function handleSaveDraft() {
+    if (!validate()) return;
+    // TODO: ganti dengan logic simpan draft (misal simpan ke localStorage / kirim ke API draft)
+    console.log('Draft tersimpan:', { file, ...form });
   }
 
   if (success) return (
@@ -61,7 +69,7 @@ export default function UploadRepo() {
         Repositorismu sedang menunggu verifikasi admin. Kami akan memberi tahu kamu setelah diproses.
       </p>
       <button
-        onClick={() => { setSuccess(false); setForm({ judul:'',abstrak:'',kategori:'',tahun:'',keywords:'' }); setFile(null); setErrors({}); }}
+        onClick={() => { setSuccess(false); setForm({ judul:'',abstrak:'',kategori:'',tanggalUpload: today,keywords:'' }); setFile(null); setErrors({}); }}
         className="btn-primary mt-6"
       >
         <span className="material-symbols-rounded text-[18px]">add</span>
@@ -159,18 +167,17 @@ export default function UploadRepo() {
               )}
             </div>
             <div>
-              <label className="label">Tahun *</label>
-              <select
-                className={`input ${errors.tahun ? 'border-red-400 focus:border-red-400 focus:ring-red-100' : ''}`}
-                value={form.tahun}
-                onChange={(e) => updateField('tahun', e.target.value)}>
-                <option value="">Pilih tahun</option>
-                {[2025,2024,2023,2022].map(y => <option key={y}>{y}</option>)}
-              </select>
-              {errors.tahun && (
+              <label className="label">Tanggal Upload *</label>
+              <input
+                type="date"
+                className={`input ${errors.tanggalUpload ? 'border-red-400 focus:border-red-400 focus:ring-red-100' : ''}`}
+                value={form.tanggalUpload}
+                onChange={(e) => updateField('tanggalUpload', e.target.value)}
+              />
+              {errors.tanggalUpload && (
                 <p className="text-xs text-red-500 mt-1 flex items-center gap-1">
                   <span className="material-symbols-rounded text-[14px]">error</span>
-                  {errors.tahun}
+                  {errors.tanggalUpload}
                 </p>
               )}
             </div>
@@ -206,7 +213,7 @@ export default function UploadRepo() {
         )}
 
         <div className="flex gap-3 justify-end">
-          <button type="button" className="btn-secondary">Simpan Draft</button>
+          <button type="button" onClick={handleSaveDraft} className="btn-secondary">Simpan Draft</button>
           <button type="submit" disabled={loading} className="btn-primary">
             {loading
               ? <><span className="material-symbols-rounded text-[18px] animate-spin">refresh</span> Mengirim...</>

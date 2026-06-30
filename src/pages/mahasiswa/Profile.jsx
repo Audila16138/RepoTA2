@@ -6,7 +6,7 @@ export default function ProfileMahasiswa() {
     nama: 'Budi Santoso',
     nim: '20210078',
     email: 'budi.santoso@mhs.univ.ac.id',
-    prodi: 'Teknik Informatika',
+    prodi: 'Sistem Informasi',
     angkatan: '2021',
     dosen: 'Dr. Siti Rahayu, M.Kom.',
     telepon: '081234567890',

@@ -25,7 +25,7 @@ export default function DashboardMahasiswa() {
             <div>
               <p className="text-white/70 text-sm">Selamat datang kembali,</p>
               <h2 className="text-xl sm:text-2xl font-bold mt-0.5">Budi Santoso</h2>
-              <p className="text-white/60 text-xs mt-1">NIM 20210078 · Teknik Informatika</p>
+              <p className="text-white/60 text-xs mt-1">NIM 20210078 · Sistem Informasi</p>
             </div>
           </div>
 
