@@ -1,160 +1,202 @@
-// ── Repositori dummy ─────────────────────────────────────────────
+// ── Repository / Submission list ────────────────────────────────────
 export const repoList = [
   {
     id: 1,
+    namaMahasiswa: 'Budi Santoso',
+    nama: 'Budi Santoso',
+    nim: '20210078',
     judul: 'Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-    nim: '20210001',
-    nama: 'Ahmad Fauzi',
-    tahun: 2024,
     kategori: 'Sistem Informasi',
-    status: 'Terverifikasi',
     similarity: 12,
     tanggal: '12 Jan 2025',
+    status: 'Terverifikasi',
   },
   {
     id: 2,
-    judul: 'Deteksi Objek Real-Time Menggunakan YOLOv8',
-    nim: '20210042',
+    namaMahasiswa: 'Siti Rahayu',
     nama: 'Siti Rahayu',
-    tahun: 2024,
-    kategori: 'Kecerdasan Buatan',
+    nim: '20210091',
+    judul: 'Aplikasi Mobile Pemesanan Makanan Berbasis Android',
+    kategori: 'Mobile',
+    similarity: 25,
+    tanggal: '10 Jan 2025',
     status: 'Menunggu',
-    similarity: 8,
-    tanggal: '15 Jan 2025',
   },
   {
     id: 3,
-    judul: 'Aplikasi Pemantauan Kesehatan IoT dengan Arduino',
-    nim: '20210078',
-    nama: 'Budi Santoso',
-    tahun: 2024,
-    kategori: 'Internet of Things',
-    status: 'Revisi',
-    similarity: 22,
-    tanggal: '18 Jan 2025',
+    namaMahasiswa: 'Ahmad Fauzi',
+    nama: 'Ahmad Fauzi',
+    nim: '20210045',
+    judul: 'Implementasi Machine Learning untuk Deteksi Penyakit Tanaman',
+    kategori: 'Machine Learning',
+    similarity: 8,
+    tanggal: '05 Jan 2025',
+    status: 'Terverifikasi',
   },
   {
     id: 4,
-    judul: 'Analisis Sentimen Media Sosial Menggunakan BERT',
-    nim: '20210112',
+    namaMahasiswa: 'Dewi Lestari',
     nama: 'Dewi Lestari',
-    tahun: 2024,
-    kategori: 'Data Science',
-    status: 'Terverifikasi',
-    similarity: 5,
-    tanggal: '20 Jan 2025',
+    nim: '20210112',
+    judul: 'Sistem Keamanan Jaringan Menggunakan Metode IDS',
+    kategori: 'Keamanan Jaringan',
+    similarity: 35,
+    tanggal: '02 Jan 2025',
+    status: 'Perlu Revisi',
   },
   {
     id: 5,
-    judul: 'Pengembangan Aplikasi Mobile E-Commerce React Native',
-    nim: '20210055',
+    namaMahasiswa: 'Rizky Pratama',
     nama: 'Rizky Pratama',
-    tahun: 2025,
-    kategori: 'Mobile Development',
-    status: 'Menunggu',
-    similarity: 15,
-    tanggal: '22 Jan 2025',
+    nim: '20210067',
+    judul: 'Website E-Commerce dengan Fitur Rekomendasi Produk',
+    kategori: 'Web',
+    similarity: 18,
+    tanggal: '28 Des 2024',
+    status: 'Terverifikasi',
   },
   {
     id: 6,
-    judul: 'Sistem Pendukung Keputusan Pemilihan Beasiswa Menggunakan SAW',
-    nim: '20210033',
+    namaMahasiswa: 'Putri Anggraini',
     nama: 'Putri Anggraini',
-    tahun: 2024,
+    nim: '20210103',
+    judul: 'Sistem Pendukung Keputusan Pemilihan Beasiswa Menggunakan AHP',
     kategori: 'Sistem Informasi',
-    status: 'Terverifikasi',
-    similarity: 9,
-    tanggal: '24 Jan 2025',
-  },
-  {
-    id: 7,
-    judul: 'Chatbot Layanan Akademik Berbasis Natural Language Processing',
-    nim: '20210067',
-    nama: 'Fajar Nugroho',
-    tahun: 2025,
-    kategori: 'Kecerdasan Buatan',
-    status: 'Terverifikasi',
-    similarity: 18,
-    tanggal: '26 Jan 2025',
-  },
-  {
-    id: 8,
-    judul: 'Sistem Smart Home Berbasis IoT dan Mobile Application',
-    nim: '20210089',
-    nama: 'Nadia Permata',
-    tahun: 2025,
-    kategori: 'Internet of Things',
-    status: 'Terverifikasi',
-    similarity: 7,
-    tanggal: '28 Jan 2025',
-  },
-  {
-    id: 9,
-    judul: 'Klasifikasi Citra Penyakit Tanaman Menggunakan CNN',
-    nim: '20210101',
-    nama: 'Hendra Wijaya',
-    tahun: 2024,
-    kategori: 'Data Science',
-    status: 'Terverifikasi',
-    similarity: 14,
-    tanggal: '30 Jan 2025',
+    similarity: 21,
+    tanggal: '20 Des 2024',
+    status: 'Menunggu',
   },
 ];
 
-// ── Kategori dummy ────────────────────────────────────────────────
-export const kategoriList = [
-  { id: 1, nama: 'Sistem Informasi',    jumlah: 145 },
-  { id: 2, nama: 'Kecerdasan Buatan',   jumlah: 98 },
-  { id: 3, nama: 'Internet of Things',  jumlah: 76 },
-  { id: 4, nama: 'Data Science',        jumlah: 112 },
-  { id: 5, nama: 'Mobile Development',  jumlah: 89 },
-  { id: 6, nama: 'Keamanan Siber',      jumlah: 54 },
-  { id: 7, nama: 'Cloud Computing',     jumlah: 67 },
-  { id: 8, nama: 'Game Development',    jumlah: 43 },
-];
-
-// ── Keyword dummy ─────────────────────────────────────────────────
-export const keywordList = [
-  { id: 1, kata: 'Machine Learning',  frekuensi: 312 },
-  { id: 2, kata: 'Deep Learning',     frekuensi: 278 },
-  { id: 3, kata: 'React.js',          frekuensi: 201 },
-  { id: 4, kata: 'IoT',               frekuensi: 187 },
-  { id: 5, kata: 'Flutter',           frekuensi: 156 },
-  { id: 6, kata: 'PostgreSQL',        frekuensi: 143 },
-  { id: 7, kata: 'Python',            frekuensi: 389 },
-  { id: 8, kata: 'Laravel',           frekuensi: 267 },
-];
-
-// ── Chart data ────────────────────────────────────────────────────
-export const uploadPerBulan = [
-  { bulan: 'Jul',  jumlah: 12 },
-  { bulan: 'Agu',  jumlah: 19 },
-  { bulan: 'Sep',  jumlah: 24 },
-  { bulan: 'Okt',  jumlah: 31 },
-  { bulan: 'Nov',  jumlah: 28 },
-  { bulan: 'Des',  jumlah: 22 },
-  { bulan: 'Jan',  jumlah: 38 },
-];
-
-export const distribusiKategori = [
-  { name: 'Sistem Informasi',  value: 145 },
-  { name: 'Kecerdasan Buatan', value: 98 },
-  { name: 'Data Science',      value: 112 },
-  { name: 'Mobile Dev',        value: 89 },
-  { name: 'Lainnya',           value: 240 },
-];
-
-// ── Metric cards ──────────────────────────────────────────────────
-export const statsAdmin = [
-  { label: 'Total Repositori', value: '1.284',  icon: 'folder_open',       color: 'bg-blue-50 text-blue-600',   trend: '+12%' },
-  { label: 'Menunggu Verif.',  value: '24',      icon: 'hourglass_top',     color: 'bg-yellow-50 text-yellow-600', trend: '+5' },
-  { label: 'Terverifikasi',    value: '1.241',  icon: 'task_alt',           color: 'bg-green-50 text-green-600',  trend: '+8%' },
-  { label: 'Ditolak',          value: '19',      icon: 'cancel',            color: 'bg-red-50 text-red-600',      trend: '-3' },
-];
-
+// ── Stats untuk dashboard mahasiswa ─────────────────────────────────
 export const statsMahasiswa = [
-  { label: 'Pengajuan Saya',   value: '3',  icon: 'description',   color: 'bg-blue-50 text-blue-600' },
-  { label: 'Terverifikasi',    value: '2',  icon: 'task_alt',      color: 'bg-green-50 text-green-600' },
-  { label: 'Menunggu',         value: '1',  icon: 'pending',       color: 'bg-yellow-50 text-yellow-600' },
-  { label: 'Perlu Revisi',     value: '0',  icon: 'edit_note',     color: 'bg-orange-50 text-orange-600' },
+  {
+    label: 'Pengajuan Saya',
+    value: 3,
+    icon: 'description',
+    color: 'bg-blue-50 text-blue-500',
+  },
+  {
+    label: 'Terverifikasi',
+    value: 2,
+    icon: 'check_circle',
+    color: 'bg-green-50 text-green-500',
+  },
+  {
+    label: 'Menunggu',
+    value: 1,
+    icon: 'schedule',
+    color: 'bg-yellow-50 text-yellow-500',
+  },
+  {
+    label: 'Perlu Revisi',
+    value: 0,
+    icon: 'edit_note',
+    color: 'bg-red-50 text-red-400',
+  },
+];
+
+// ── Stats untuk dashboard admin ─────────────────────────────────────
+export const statsAdmin = [
+  {
+    label: 'Total Repositori',
+    value: 128,
+    icon: 'folder_copy',
+    color: 'bg-blue-50 text-blue-500',
+    trend: '+12%',
+  },
+  {
+    label: 'Terverifikasi',
+    value: 94,
+    icon: 'check_circle',
+    color: 'bg-green-50 text-green-500',
+    trend: '+8%',
+  },
+  {
+    label: 'Menunggu Review',
+    value: 21,
+    icon: 'schedule',
+    color: 'bg-yellow-50 text-yellow-500',
+    trend: '+3%',
+  },
+  {
+    label: 'Perlu Revisi',
+    value: 13,
+    icon: 'edit_note',
+    color: 'bg-red-50 text-red-400',
+    trend: '-2%',
+  },
+];
+
+// ── Upload per bulan (untuk BarChart) ───────────────────────────────
+export const uploadPerBulan = [
+  { bulan: 'Jul', jumlah: 1 },
+  { bulan: 'Agu', jumlah: 2 },
+  { bulan: 'Sep', jumlah: 3 },
+  { bulan: 'Okt', jumlah: 5 },
+  { bulan: 'Nov', jumlah: 4 },
+  { bulan: 'Des', jumlah: 3 },
+  { bulan: 'Jan', jumlah: 6 },
+];
+
+// ── Distribusi kategori (untuk PieChart "Distribusi Kategori") ─────
+// PieChart di DashboardAdmin.jsx pakai dataKey="value", jadi field
+// harus bernama `name` dan `value` agar Legend & Tooltip muncul benar.
+export const distribusiKategori = [
+  { name: 'Sistem Informasi', value: 38 },
+  { name: 'Mobile', value: 22 },
+  { name: 'Machine Learning', value: 31 },
+  { name: 'Keamanan Jaringan', value: 17 },
+  { name: 'Web', value: 20 },
+];
+
+// ── Daftar kategori (untuk halaman admin/Kategori.jsx & guest/Browse.jsx) ─
+export const kategoriList = [
+  { id: 1, nama: 'Sistem Informasi', jumlah: 38 },
+  { id: 2, nama: 'Mobile', jumlah: 22 },
+  { id: 3, nama: 'Machine Learning', jumlah: 31 },
+  { id: 4, nama: 'Keamanan Jaringan', jumlah: 17 },
+  { id: 5, nama: 'Web', jumlah: 20 },
+];
+
+// ── Daftar keyword populer (untuk halaman admin/Keyword.jsx) ───────
+export const keywordList = [
+  { id: 1, kata: 'machine learning', frekuensi: 42 },
+  { id: 2, kata: 'sistem informasi', frekuensi: 38 },
+  { id: 3, kata: 'android', frekuensi: 29 },
+  { id: 4, kata: 'web', frekuensi: 25 },
+  { id: 5, kata: 'keamanan jaringan', frekuensi: 21 },
+  { id: 6, kata: 'e-commerce', frekuensi: 18 },
+  { id: 7, kata: 'data mining', frekuensi: 15 },
+  { id: 8, kata: 'IoT', frekuensi: 12 },
+  { id: 9, kata: 'deep learning', frekuensi: 9 },
+  { id: 10, kata: 'cloud computing', frekuensi: 6 },
+];
+
+
+export const aktivitasTerbaru = [
+  {
+    id: 1,
+    namaMahasiswa: 'Budi Santoso',
+    aksi: 'mengupload repositori baru',
+    judul: 'Sistem Informasi Manajemen Perpustakaan',
+    waktu: '5 menit lalu',
+    icon: 'upload_file',
+  },
+  {
+    id: 2,
+    namaMahasiswa: 'Siti Rahayu',
+    aksi: 'mengajukan revisi',
+    judul: 'Aplikasi Mobile Pemesanan Makanan',
+    waktu: '1 jam lalu',
+    icon: 'edit_note',
+  },
+  {
+    id: 3,
+    namaMahasiswa: 'Admin',
+    aksi: 'memverifikasi repositori',
+    judul: 'Implementasi Machine Learning Deteksi Penyakit',
+    waktu: '3 jam lalu',
+    icon: 'check_circle',
+  },
 ];

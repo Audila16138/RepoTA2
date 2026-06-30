@@ -3,6 +3,7 @@ export function statusBadge(status) {
   const map = {
     Terverifikasi: 'badge-success',
     Menunggu:      'badge-warning',
+    'Perlu Revisi': 'badge-error',
     Revisi:        'badge-error',
     Ditolak:       'badge-error',
     Diproses:      'badge-info',

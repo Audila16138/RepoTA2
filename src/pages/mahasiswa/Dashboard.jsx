@@ -1,19 +1,20 @@
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { statsMahasiswa, repoList, uploadPerBulan } from '../../utils/dummyData';
-import { statusBadge, similarityColor, truncate } from '../../utils/helpers';
-
-const BAR_COLORS = ['#a8a5f1','#7b77ea','#4f4ae3','#3525cd','#2b1ea4','#21177b','#3525cd'];
+import { repoList, statsMahasiswa } from '../../utils/dummyData';
+import { statusBadge, truncate } from '../../utils/helpers';
 
 export default function DashboardMahasiswa() {
-  const myRepos = repoList.slice(0, 3);
   const visibleStats = statsMahasiswa.filter((s) => s.label !== 'Menunggu');
+
+  // Data untuk tabel "Riwayat Upload Mahasiswa" (selain repo Budi sendiri)
+  const riwayatUpload = [repoList[2], repoList[3], repoList[4], repoList[1]];
+
+  // Data untuk tabel "Daftar Repository Mahasiswa" (semua repo)
+  const daftarRepo = repoList;
 
   return (
     <div className="space-y-5">
 
       {/* Welcome banner */}
       <div className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-500 to-primary-400 rounded-2xl p-6 sm:p-8 text-white">
-        {/* Decorative blobs */}
         <div className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"></div>
         <div className="pointer-events-none absolute -bottom-14 right-16 w-28 h-28 rounded-full bg-white/10"></div>
 
@@ -25,14 +26,11 @@ export default function DashboardMahasiswa() {
             <div>
               <p className="text-white/70 text-sm">Selamat datang kembali,</p>
               <h2 className="text-xl sm:text-2xl font-bold mt-0.5">Budi Santoso</h2>
-              <p className="text-white/60 text-xs mt-1">NIM 20210078 · Sistem Informasi</p>
+              <p className="text-white/60 text-xs mt-1">NIM 20210078 · Teknik Informatika</p>
             </div>
           </div>
 
-          <a
-            href="/mahasiswa/upload"
-            className="inline-flex items-center justify-center gap-2 bg-white text-primary text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-white/90 transition-colors shrink-0"
-          >
+          <a href="/mahasiswa/upload" className="inline-flex items-center justify-center gap-2 bg-white text-primary text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-white/90 transition-colors shrink-0">
             <span className="material-symbols-rounded text-[18px]">upload_file</span>
             Upload Repositori
           </a>
@@ -54,26 +52,32 @@ export default function DashboardMahasiswa() {
         ))}
       </div>
 
-      {/* Bento: chart + info */}
+      {/* Bento: Riwayat Upload + Aksi Cepat */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Chart */}
+
+        {/* Riwayat Upload Mahasiswa */}
         <div className="card lg:col-span-2">
-          <p className="text-sm font-semibold mb-4">Upload per Bulan</p>
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={uploadPerBulan} barSize={28}>
-              <XAxis dataKey="bulan" tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-              <YAxis hide />
-              <Tooltip
-                contentStyle={{ borderRadius: 10, border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,.1)', fontSize: 12 }}
-                cursor={{ fill: '#3525cd10' }}
-              />
-              <Bar dataKey="jumlah" radius={[6,6,0,0]}>
-                {uploadPerBulan.map((_, i) => (
-                  <Cell key={i} fill={BAR_COLORS[i % BAR_COLORS.length]} />
+          <p className="text-sm font-semibold mb-4">Riwayat Upload Mahasiswa</p>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr>
+                  <th className="table-th rounded-tl-lg">Nama Mahasiswa</th>
+                  <th className="table-th">Judul Repository</th>
+                  <th className="table-th rounded-tr-lg">Tanggal Upload</th>
+                </tr>
+              </thead>
+              <tbody>
+                {riwayatUpload.map((r) => (
+                  <tr key={r.id} className="table-row">
+                    <td className="table-td font-medium whitespace-nowrap">{r.namaMahasiswa}</td>
+                    <td className="table-td max-w-[260px]">{truncate(r.judul, 45)}</td>
+                    <td className="table-td text-gray-400 whitespace-nowrap">{r.tanggal}</td>
+                  </tr>
                 ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Quick actions */}
@@ -81,11 +85,10 @@ export default function DashboardMahasiswa() {
           <p className="text-sm font-semibold">Aksi Cepat</p>
           {[
             { label: 'Upload Repositori Baru', icon: 'upload_file',   href: '/mahasiswa/upload',     color: 'bg-primary/10 text-primary' },
-            { label: 'Cek Similaritas',         icon: 'manage_search', href: '/mahasiswa/similarity', color: 'bg-green-50 text-green-600' },
-            { label: 'Lihat Riwayat',           icon: 'history',       href: '/mahasiswa/history',    color: 'bg-yellow-50 text-yellow-600' },
+            { label: 'Cek Similaritas',        icon: 'manage_search', href: '/mahasiswa/similarity', color: 'bg-green-50 text-green-600' },
+            { label: 'Lihat Riwayat',          icon: 'history',       href: '/mahasiswa/history',    color: 'bg-yellow-50 text-yellow-600' },
           ].map(({ label, icon, href, color }) => (
-            <a key={href} href={href}
-              className="flex items-center gap-3 p-3 rounded-xl border border-outline/40 hover:border-primary/40 hover:bg-primary/5 transition group">
+            <a key={href} href={href} className="flex items-center gap-3 p-3 rounded-xl border border-outline/40 hover:border-primary/40 hover:bg-primary/5 transition group">
               <span className={`w-8 h-8 rounded-lg flex items-center justify-center ${color}`}>
                 <span className="material-symbols-rounded icon-filled text-[18px]">{icon}</span>
               </span>
@@ -94,36 +97,33 @@ export default function DashboardMahasiswa() {
             </a>
           ))}
         </div>
+
       </div>
 
-      {/* Tabel repositori terbaru */}
+      {/* Daftar Repository Mahasiswa */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm font-semibold">Repositori Terbaru Saya</p>
+          <p className="text-sm font-semibold">Daftar Repository Mahasiswa</p>
           <a href="/mahasiswa/history" className="text-xs text-primary hover:underline font-medium">Lihat semua →</a>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr>
-                <th className="table-th rounded-tl-lg">Judul</th>
-                <th className="table-th">Kategori</th>
-                <th className="table-th">Similaritas</th>
-                <th className="table-th">Tanggal</th>
+                <th className="table-th rounded-tl-lg">No</th>
+                <th className="table-th">Nama Mahasiswa</th>
+                <th className="table-th">Judul Repository</th>
+                <th className="table-th">Tanggal Upload</th>
                 <th className="table-th rounded-tr-lg">Status</th>
               </tr>
             </thead>
             <tbody>
-              {myRepos.map((r) => (
+              {daftarRepo.map((r, i) => (
                 <tr key={r.id} className="table-row">
-                  <td className="table-td font-medium max-w-[220px]">{truncate(r.judul, 50)}</td>
-                  <td className="table-td"><span className="badge badge-info">{r.kategori}</span></td>
-                  <td className="table-td">
-                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold ${similarityColor(r.similarity)}`}>
-                      {r.similarity}%
-                    </span>
-                  </td>
-                  <td className="table-td text-gray-400">{r.tanggal}</td>
+                  <td className="table-td text-gray-400">{i + 1}</td>
+                  <td className="table-td font-medium whitespace-nowrap">{r.namaMahasiswa}</td>
+                  <td className="table-td max-w-[260px]">{truncate(r.judul, 50)}</td>
+                  <td className="table-td text-gray-400 whitespace-nowrap">{r.tanggal}</td>
                   <td className="table-td">
                     <span className={statusBadge(r.status)}>{r.status}</span>
                   </td>
